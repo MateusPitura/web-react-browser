@@ -17,7 +17,8 @@ const Input = (props: PropsType) => {
                 className="Input__input"
                 name={props.name}
                 type={props.type}
-                required />
+                
+            />
         </label>
     )
 }
