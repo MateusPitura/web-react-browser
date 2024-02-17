@@ -3,13 +3,17 @@ import "./Cadastro.css"
 import Input from "../../components/input/Input.tsx";
 import Button from "../../components/button/Button.tsx";
 import { save } from "../../controller/localStorage.tsx";
-import { USUARIOS } from '../../contants.tsx'
+import { USUARIOS } from '../../constants.tsx'
+import { useNavigate } from "react-router-dom";
 
 const Cadastro = () => {
 
-    const handleEnviarFormulario = (event) => {
+    const navigate = useNavigate()
+
+    const handleEnviarFormulario = (event: any) => {
         event.preventDefault()
         const newUser = {
+            id: new Date().getTime(),
             nome: event.target[0].value,
             email: event.target[1].value,
             senha: event.target[2].value,
@@ -19,6 +23,7 @@ const Cadastro = () => {
         }
         save(USUARIOS, newUser)
         alert("Usuário cadastrado")
+        navigate("/")
     }
 
     return(

@@ -2,22 +2,35 @@ import React from "react";
 import './Login.css'
 import Input from "../../components/input/Input.tsx";
 import Button from "../../components/button/Button.tsx";
-import { retrieve } from "../../controller/localStorage.tsx"
-import { USUARIOS } from '../../contants.tsx'
+import { retrieve, replace } from "../../controller/localStorage.tsx"
+import { USUARIOS, LOGADO } from '../../constants.tsx'
+import { useNavigate } from "react-router-dom";
+
+type LoginType = {
+    email: string,
+    senha: string,
+}
 
 const Login = () => {
 
-    const handleValidarLogin = (event) => {
+    const navigate = useNavigate()
+
+    const handleValidarLogin = (event: any) => {
         event.preventDefault()
         const usuarios = retrieve(USUARIOS)
         const user = {
             email: event.target[0].value,
             senha: event.target[1].value,
         }
-        const validado = usuarios.find(item => (
-            (item.email == user.email) && (item.senha = user.senha)
+        const userLogado = usuarios.find((item: LoginType) => (
+            (item.email === user.email) && (item.senha === user.senha)
         ))
-        console.log(validado)
+        if(userLogado){
+            replace(LOGADO, userLogado)
+            navigate("/browser")
+        } else {
+            alert("Login não encontrado")
+        }
     }
 
     return(

@@ -1,0 +1,30 @@
+.InputWithChanges{
+    display: flex;
+    padding: 10px;
+    margin: 5px;
+    /* background-color: lightblue; */
+}
+
+.InputWithChanges__label{
+    display: flex;
+    flex: 1;
+    align-items: center;
+    padding-right: 10px;
+    color: #0C0A09;
+    font-size: 20px;
+}
+
+.InputWithChanges__input{
+    border-radius: 5px;
+    display: flex;
+    flex: 1;
+    padding: 5px;
+    border: none;
+    width: 100%;
+    font-size: 20px;
+    color: #0C0A09;
+}
+
+.InputWithChanges__input:focus{
+    outline: none
+}

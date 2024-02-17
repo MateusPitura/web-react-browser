@@ -6,6 +6,11 @@ export const save = (key: string, value: Object) => {
     localStorage.setItem(key, dataStringfy);
 }
 
+export const replace = (key: string, value: Object) => {
+    const dataStringfy = JSON.stringify(value) 
+    localStorage.setItem(key, dataStringfy);
+}
+
 export const retrieve = (key: string) => {
     const dataRetrieve = localStorage.getItem(key)
     const dataParsed = dataRetrieve?JSON.parse(dataRetrieve):[]
