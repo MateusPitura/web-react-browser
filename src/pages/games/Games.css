@@ -1,0 +1,19 @@
+.Games{
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.Games__formulario{
+    padding: 50px;
+    background-color: #C2410C;
+    border-radius: 20px;
+}
+
+.Games__button{
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

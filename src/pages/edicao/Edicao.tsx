@@ -61,7 +61,7 @@ const Edicao = () => {
                 <InputWithChanges label="Estado" type="text" value={estado} setValue={setEstado} />
                 <InputWithChanges label="País" type="text" value={pais} setValue={setPais} />
                 <div className="Edicao__button">
-                    <Button title="Enviar" />
+                    <Button title="Atualizar" />
                 </div>
             </form>
         </div>

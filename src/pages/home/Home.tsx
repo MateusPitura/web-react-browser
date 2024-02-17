@@ -10,6 +10,9 @@ const Home = () => {
             <Link to="/login">
                 <button>Login</button>
             </Link>
+            <Link to="/games">
+                <button>Acesso restrito</button>
+            </Link>
         </div>
     )
 }
