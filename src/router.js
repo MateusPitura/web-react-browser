@@ -1,6 +1,6 @@
 import Home from './pages/home/Home.tsx'
 import Login from './pages/login/Login.tsx'
-import Cadastro from './pages/Cadastro/Cadastro.jsx';
+import Cadastro from './pages/cadastro/Cadastro.jsx';
 
 const { createBrowserRouter } = require("react-router-dom");
 

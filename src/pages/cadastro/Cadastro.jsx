@@ -18,17 +18,18 @@ const Cadastro = () => {
             pais: event.target[5].value
         }
         save(USUARIOS, newUser)
+        alert("Usuário cadastrado")
     }
 
     return(
-        <div onSubmit={(event)=>handleEnviarFormulario(event)} className="Cadastro">
-            <form className="Cadastro__formulario">
-                <Input label="Nome completo" name="nome" type="text"/>
-                <Input label="E-mail" name="email" type="email"/>
-                <Input label="Senha" name="senha" type="password"/>
-                <Input label="Data de nascimento" name="nascimento" type="date"/>
-                <Input label="Estado" name="estado" type="text"/>
-                <Input label="País" name="pais" type="text"/>
+        <div className="Cadastro">
+            <form onSubmit={(event)=>handleEnviarFormulario(event)} className="Cadastro__formulario">
+                <Input label="Nome completo" type="text"/>
+                <Input label="E-mail" type="email"/>
+                <Input label="Senha" type="password"/>
+                <Input label="Data de nascimento" type="date"/>
+                <Input label="Estado" type="text"/>
+                <Input label="País" type="text"/>
                 <div className="Cadastro__button"> 
                     <Button title="Enviar"/>
                 </div> 

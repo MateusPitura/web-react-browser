@@ -3,7 +3,6 @@ import './Input.css'
 
 type PropsType = {
     label: string,
-    name: string,
     type: string,
 }
 
@@ -15,9 +14,8 @@ const Input = (props: PropsType) => {
             </div>
             <input
                 className="Input__input"
-                name={props.name}
                 type={props.type}
-                
+                // required
             />
         </label>
     )

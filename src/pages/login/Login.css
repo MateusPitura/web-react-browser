@@ -1,0 +1,19 @@
+.Login{
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.Login__formulario{
+    padding: 50px;
+    background-color: #C2410C;
+    border-radius: 20px;
+}
+
+.Login__button{
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
