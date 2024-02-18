@@ -6,6 +6,7 @@ import ButtonPrincipal from "../../components/buttonPrincipal/ButtonPrincipal.ts
 import Input from "../../components/input/Input.tsx";
 import { get, set } from "../../controller/localStorage.tsx";
 import { USER_LIST, USER_LOGADO } from "../../constant.tsx";
+import { ToastContainer, toast } from 'react-toastify';
 
 type loginType = {
     email: string,
@@ -30,7 +31,16 @@ const Welcome = () => {
             set(USER_LOGADO, currentUser)
             navigate("/browser")
         } else {
-            setUserNotFound(true)
+            toast.error('Usuário e/ou senha inválidos', {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         }
     }
 
@@ -40,19 +50,9 @@ const Welcome = () => {
                 <div className="Welcome__title">
                     Seja bem-vindo!
                 </div>
-                <form onSubmit={(event) => handleValidarLogin(event)}>
+                <form onSubmit={event => handleValidarLogin(event)}>
                     <Input label="E-mail" type="email" />
                     <Input label="Senha" type="password" />
-                    {
-                        userNotFound?
-                        <div className="Welcome__userNotFound">
-                            Usuário e/ou senha inválidos
-                        </div>
-                        :
-                        <div>
-                            
-                        </div>
-                    }
                     <div className="Welcome__login">
                         <ButtonPrincipal title="Login" />
                     </div>
@@ -60,10 +60,13 @@ const Welcome = () => {
                 <div onClick={() => navigate("/cadastro")} className="Welcome__cadastro">
                     <ButtonSecondary title="Criar cadastro" />
                 </div>
-                <div onClick={() => navigate("/games")} className="Welcome__adm">
-                    Acesso restrito
+                <div className="Welcome__adm">
+                    <div onClick={() => navigate("/games")} className="Welcome__button">
+                        Acesso restrito
+                    </div>
                 </div>
             </div>
+            <ToastContainer/>
         </div>
     )
 }

@@ -3,17 +3,31 @@
     height: 100vh;
     align-items: center;
     justify-content: center;
+    background-color: #532AEF;
 }
 
-.Cadastro__formulario{
+.Cadastro__form{
     padding: 50px;
-    background-color: #C2410C;
+    background-color: white;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     border-radius: 20px;
 }
 
 .Cadastro__button{
-    margin-top: 50px;
     display: flex;
     align-items: flex;
     justify-content: center;
+}
+
+.Cadastro__back{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 15px;
+    color: #532AEF;
+    margin: 20px
+}
+
+.Cadastro__button{
+    cursor: pointer;
 }
