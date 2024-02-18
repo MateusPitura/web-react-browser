@@ -40,6 +40,9 @@ const Games = () => {
             trailer: event.target[3].value,
             descricao: event.target[4].value,
             imagem: event.target[5].value,
+            countAvaliacoes: 0,
+            sumNotas: 0,
+            comentarios: [],
         }
         save(GAMES, newGame)
     }
