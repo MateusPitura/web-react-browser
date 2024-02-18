@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { retrieve, replace } from "../../controller/localStorage.tsx";
-import { GAMES } from "../../constants.tsx";
+import { get, set } from "../../controller/localStorage.tsx";
+import { GAMES } from "../../constant.tsx";
 import Input from "../../components/input/Input.tsx";
-import Button from "../../components/button/Button.tsx";
+import Button from "../../components/buttonPrincipal/ButtonPrincipal.tsx";
 
 type GameType = {
     nome: string,
@@ -19,7 +19,7 @@ const Descricao = () => {
     const [game, setGame] = useState();
 
     useEffect(() => {
-        setGameList(retrieve(GAMES))
+        setGameList(get(GAMES))
     }, [])
 
     useEffect(() => {
@@ -35,7 +35,7 @@ const Descricao = () => {
         event.preventDefault()
         const searchParams = new URLSearchParams(window.location.search);
         const id = searchParams.get('id');
-        const list = retrieve(GAMES)
+        const list = get(GAMES)
         list.map(item => {
             if (item.id.toString() === id) {
                 item.comentarios.push(event.target[0].value)
@@ -43,7 +43,7 @@ const Descricao = () => {
                 item.sumNotas+=Number(event.target[1].value)
             }
         })
-        replace(GAMES, list)
+        set(GAMES, list)
     }
 
     return (

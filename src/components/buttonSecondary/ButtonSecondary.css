@@ -1,0 +1,12 @@
+.ButtonSecondary{
+    padding: 10px;
+    margin: 10px;
+    font-size: 20px;
+    background-color: white;
+    color: #1E1B4B;
+    border: none;
+    border: 2px #1E1B4B solid;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}

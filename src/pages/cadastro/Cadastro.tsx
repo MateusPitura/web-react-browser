@@ -1,9 +1,9 @@
 import React from "react";
 import "./Cadastro.css"
 import Input from "../../components/input/Input.tsx";
-import Button from "../../components/button/Button.tsx";
+import Button from "../../components/buttonPrincipal/ButtonPrincipal.tsx";
 import { save } from "../../controller/localStorage.tsx";
-import { USUARIOS } from '../../constants.tsx'
+import { USER_LIST } from "../../constant.tsx";
 import { useNavigate } from "react-router-dom";
 
 const Cadastro = () => {
@@ -21,7 +21,7 @@ const Cadastro = () => {
             estado: event.target[4].value,
             pais: event.target[5].value
         }
-        save(USUARIOS, newUser)
+        save(USER_LIST, newUser)
         alert("Usuário cadastrado")
         navigate("/")
     }

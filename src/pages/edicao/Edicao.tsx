@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./Edicao.css"
 import InputWithChanges from "../../components/inputWithChanges/InputWithChanges.tsx";
-import Button from "../../components/button/Button.tsx";
-import { retrieve, replace, save } from "../../controller/localStorage.tsx"
-import { USUARIOS, LOGADO } from '../../constants.tsx'
+import Button from "../../components/buttonPrincipal/ButtonPrincipal.tsx";
+import { get, set, save } from "../../controller/localStorage.tsx"
+import { USER_LIST, USER_LOGADO } from "../../constant.tsx";
 
 const Edicao = () => {
 
@@ -14,7 +14,7 @@ const Edicao = () => {
     const [estado, setEstado] = useState("")
     const [pais, setPais] = useState("")
 
-    const userLogado = retrieve(LOGADO)
+    const userLogado = get(USER_LOGADO)
 
     useEffect(() => {
         setNome(userLogado.nome)
@@ -36,8 +36,8 @@ const Edicao = () => {
             estado: event.target[4].value,
             pais: event.target[5].value
         }
-        replace(LOGADO, dataUpdated)
-        const listUsers = retrieve(USUARIOS)
+        set(USER_LOGADO, dataUpdated)
+        const listUsers = get(USER_LIST)
         listUsers.map(item => {
             if (item.id === userLogado.id) {
                 item.nome = event.target[0].value
@@ -48,7 +48,7 @@ const Edicao = () => {
                 item.pais = event.target[5].value
             }
         })
-        replace(USUARIOS, listUsers)
+        set(USER_LIST, listUsers)
     }
 
     return (

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import InputWithChanges from "../../components/inputWithChanges/InputWithChanges.tsx";
 import Game from "../../components/game/Game.tsx";
-import Button from "../../components/button/Button.tsx";
-import { retrieve } from '../../controller/localStorage.tsx'
-import { GAMES, CATEGORIAS } from '../../constants.tsx'
+import Button from "../../components/buttonPrincipal/ButtonPrincipal.tsx";
+import { get } from '../../controller/localStorage.tsx'
+import { GAMES, CATEGORIAS } from "../../constant.tsx";
 
 const Browser = () => {
 
@@ -14,8 +14,8 @@ const Browser = () => {
     const [categoriaList, setCategoriaList] = useState([])
 
     useEffect(() => {
-        setGameList(retrieve(GAMES))
-        setCategoriaList(retrieve(CATEGORIAS))
+        setGameList(get(GAMES))
+        setCategoriaList(get(CATEGORIAS))
     }, [])
 
     const handlePesquisar = (event) => {

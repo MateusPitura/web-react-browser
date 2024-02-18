@@ -1,0 +1,11 @@
+.ButtonPrincipal{
+    padding: 10px;
+    margin: 10px;
+    font-size: 20px;
+    background-color: #1E1B4B;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}

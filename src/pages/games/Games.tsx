@@ -1,33 +1,33 @@
 import React, { useEffect, useState } from "react";
 import './Games.css'
 import Input from '../../components/input/Input.tsx'
-import Button from '../../components/button/Button.tsx'
-import { CATEGORIAS, GAMES } from '../../constants.tsx'
-import { retrieve, save, replace } from "../../controller/localStorage.tsx";
+import Button from "../../components/buttonPrincipal/ButtonPrincipal.tsx";
+import { CATEGORIAS, GAMES } from "../../constant.tsx";
+import { get, save, set } from "../../controller/localStorage.tsx";
 
 const Games = () => {
 
     const [categorias, setCategorias] = useState([])
 
     useEffect(() => {
-        setCategorias(retrieve(CATEGORIAS));
+        setCategorias(get(CATEGORIAS));
     }, [])
 
     const handleEditarCategoria = (event: any) => {
         event.preventDefault()
         const categoriaAntiga = event.target[0].value
         const categoriaNova = event.target[1].value
-        const listaCategorias = retrieve(CATEGORIAS)
+        const listaCategorias = get(CATEGORIAS)
         const index = listaCategorias.indexOf(categoriaAntiga)
         listaCategorias.splice(index, 1, categoriaNova)
-        replace(CATEGORIAS, listaCategorias)
+        set(CATEGORIAS, listaCategorias)
         setCategorias(listaCategorias)
     }
 
     const handleCriarCategoria = (event: any) => {
         event.preventDefault()
         save(CATEGORIAS, event.target[0].value)
-        setCategorias(retrieve(CATEGORIAS))
+        setCategorias(get(CATEGORIAS))
     }
 
     const handleCadastrarGame = (event: any) => {
