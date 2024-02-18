@@ -1,14 +1,19 @@
 import React from "react";
 import './Game.css'
+import { useNavigate } from "react-router-dom";
 
 type propsType = {
+    id: number,
     title: string,
     categoria: string,
 }
 
 const Game = (props: propsType) => {
+
+    const navigate = useNavigate()
+
     return (
-        <div className="Game">
+        <div onClick={()=>{navigate(`/descricao?id=${props.id}`)}} className="Game">
             <div className="Game__title">
                 {props.title}
             </div>

@@ -18,13 +18,6 @@ const Browser = () => {
         setCategoriaList(retrieve(CATEGORIAS))
     }, [])
 
-    // useEffect(() => {
-    //     const filteredGameList = gameList.filter(item =>
-            
-    //     )
-    //     setGameListFiltered(filteredGameList)
-    // }, [search])
-
     const handlePesquisar = (event) => {
         event.preventDefault()
         const categoriaSelecionada = event.target[1].value
@@ -62,7 +55,7 @@ const Browser = () => {
             <div>
                 {
                     gameListFiltered.map(item => (
-                        <Game title={item.nome} categoria={item.categoria} />
+                        <Game id={item.id} title={item.nome} categoria={item.categoria} />
                     ))
                 }
             </div>
