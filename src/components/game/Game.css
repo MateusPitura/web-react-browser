@@ -1,0 +1,20 @@
+.Game{
+    display: flex;
+    background-color: #BFDBFE;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 20px;
+    column-gap: 20px
+}
+
+.Game__title{
+    font-size: 20px;
+    color: #0C0A09;
+}
+
+.Game__categoria{
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    color: #78716C
+}
