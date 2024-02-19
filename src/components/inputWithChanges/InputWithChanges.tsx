@@ -1,5 +1,5 @@
 import React from "react";
-import './InputWithChanges.css'
+import '../input/Input.css'
 
 type PropsType = {
     label: string,
@@ -10,16 +10,15 @@ type PropsType = {
 
 const InputWithChanges = (props: PropsType) => {
     return (
-        <label className="InputWithChanges">
-            <div className="InputWithChanges__label">
+        <label className="Input">
+            <div className="Input__label">
                 {props.label}
             </div>
             <input
-                className="InputWithChanges__input"
+                className="Input__input"
                 type={props.type}
                 value={props.value}
                 onChange={(e)=>props.setValue(e.target.value)}
-                // required
             />
         </label>
     )

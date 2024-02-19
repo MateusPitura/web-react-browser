@@ -1,17 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import InputWithChanges from "../../components/inputWithChanges/InputWithChanges.tsx";
 import Game from "../../components/game/Game.tsx";
 import Button from "../../components/buttonPrincipal/ButtonPrincipal.tsx";
 import { get } from '../../controller/localStorage.tsx'
 import { GAME, CATEGORIA } from "../../constant.tsx";
+import Header from '../../components/header/Header.tsx'
+import ButtonTertiary from "../../components/buttonTertiary/ButtonTertiary.tsx";
+import ButtonSecondary from "../../components/buttonSecondary/ButtonSecondary.tsx"
+import "./Home.css"
+import { remove } from "../../controller/localStorage.tsx";
+import { USER_LOGADO } from "../../constant.tsx";
 
-const Browser = () => {
+const Home = () => {
 
     const [search, setSearch] = useState()
     const [gameList, setGameList] = useState([])
     const [gameListFiltered, setGameListFiltered] = useState([])
     const [categoriaList, setCategoriaList] = useState([])
+
+    const navigate = useNavigate()
+
+    const handleSair = () => {
+        remove(USER_LOGADO)
+        navigate("/")
+    }
 
     useEffect(() => {
         setGameList(get(GAME))
@@ -30,7 +43,17 @@ const Browser = () => {
     }
 
     return (
-        <div>
+        <div className="Home">
+            <Header>
+                <ButtonTertiary
+                    title="Sair"
+                    onClick={()=>handleSair()}
+                />
+                <ButtonSecondary
+                    title="Editar perfil"
+                    onClick={()=>navigate("/perfil")}
+                />
+            </Header>
             <Link to="/edicao">
                 <button>Editar dados pessoais</button>
             </Link>
@@ -66,4 +89,4 @@ const Browser = () => {
     )
 }
 
-export default Browser
+export default Home

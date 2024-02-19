@@ -1,0 +1,14 @@
+.Perfil{
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-color: #532AEF;
+}
+
+.Perfil__form{
+    padding: 50px;
+    background-color: white;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 20px;
+}

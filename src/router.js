@@ -1,7 +1,7 @@
 import Welcome from './pages/welcome/Welcome.tsx'
 import Cadastro from './pages/cadastro/Cadastro.tsx';
-import Browser from './pages/browser/Browser.tsx';
-import Edicao from './pages/edicao/Edicao.tsx';
+import Home from './pages/home/Home.tsx';
+import Perfil from './pages/perfil/Perfil.tsx';
 import Adm from './pages/adm/Adm.tsx';
 import Descricao from './pages/descricao/Descricao.tsx';
 
@@ -17,12 +17,12 @@ const router = createBrowserRouter([
         element: <Cadastro/>
     },
     {
-        path: "/browser",
-        element: <Browser/>
+        path: "/home",
+        element: <Home/>
     },
     {
-        path: "/edicao",
-        element: <Edicao/>
+        path: "/perfil",
+        element: <Perfil/>
     },
     {
         path: '/adm',

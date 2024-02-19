@@ -59,7 +59,7 @@ const Cadastro = () => {
                 </form>
                 <ButtonTertiary
                     title="Voltar"
-                    onCick={() => navigate("/")}
+                    onClick={() => navigate("/")}
                 />
             </div>
             <ToastContainer />

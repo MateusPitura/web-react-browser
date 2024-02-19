@@ -30,7 +30,7 @@ const Welcome = () => {
         ))
         if (currentUser) {
             set(USER_LOGADO, currentUser)
-            navigate("/browser")
+            navigate("/home")
         } else {
             toastError('Usuário e/ou senha inválidos')
         }
@@ -45,12 +45,10 @@ const Welcome = () => {
                     <Input label="Senha" type="password" />
                     <ButtonPrincipal title="Login" />
                 </form>
-                <div onClick={() => navigate("/cadastro")}>
-                    <ButtonSecondary title="Criar cadastro" />
-                </div>
+                <ButtonSecondary onClick={() => navigate("/cadastro")} title="Criar cadastro"/>
                 <ButtonTeriary
                     title="Acesso restrito"
-                    onCick={() => navigate("/adm")}
+                    onClick={() => navigate("/adm")}
                 />
             </div>
             <ToastContainer />

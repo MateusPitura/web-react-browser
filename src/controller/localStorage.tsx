@@ -16,3 +16,7 @@ export const get = (key: string) => {
     const dataParsed = dataRetrieve?JSON.parse(dataRetrieve):[]
     return dataParsed;
 }
+
+export const remove = (key: string) => {
+    localStorage.removeItem(key)
+}
