@@ -11,13 +11,19 @@ import ButtonSecondary from "../../components/buttonSecondary/ButtonSecondary.ts
 import "./Home.css"
 import { remove } from "../../controller/localStorage.tsx";
 import { USER_LOGADO } from "../../constant.tsx";
+import Select from "../../components/select/Select.tsx";
+
+type gameType = {
+    nome: string,
+    categoria: string
+}
 
 const Home = () => {
 
-    const [search, setSearch] = useState()
+    const [search, setSearch] = useState<string>()
     const [gameList, setGameList] = useState([])
     const [gameListFiltered, setGameListFiltered] = useState([])
-    const [categoriaList, setCategoriaList] = useState([])
+    const [categorias, setCategorias] = useState<string[]>([])
 
     const navigate = useNavigate()
 
@@ -28,18 +34,21 @@ const Home = () => {
 
     useEffect(() => {
         setGameList(get(GAME))
-        setCategoriaList(get(CATEGORIA))
+        setCategorias(get(CATEGORIA));
     }, [])
 
     const handlePesquisar = (event) => {
         event.preventDefault()
         const categoriaSelecionada = event.target[1].value
-        const filteredGameList = gameList.filter(item =>
-            (item.nome.toLowerCase().indexOf(search?.toLowerCase()) > -1)
-            &&
-            (item.categoria == categoriaSelecionada)
-        )
-        setGameListFiltered(filteredGameList)
+        const searchLowCase = search?.toLowerCase()
+        if (searchLowCase) {
+            const filteredGameList = gameList.filter((item: gameType) =>
+                (item.nome.toLowerCase().indexOf(searchLowCase) > -1)
+                &&
+                (item.categoria == categoriaSelecionada)
+            )
+            setGameListFiltered(filteredGameList)
+        }
     }
 
     return (
@@ -47,44 +56,35 @@ const Home = () => {
             <Header>
                 <ButtonTertiary
                     title="Sair"
-                    onClick={()=>handleSair()}
+                    onClick={() => handleSair()}
                 />
                 <ButtonSecondary
                     title="Editar perfil"
-                    onClick={()=>navigate("/perfil")}
+                    onClick={() => navigate("/perfil")}
                 />
             </Header>
-            <Link to="/edicao">
-                <button>Editar dados pessoais</button>
-            </Link>
-            <form onSubmit={(event)=>handlePesquisar(event)}>
-                <InputWithChanges
-                    label="Pesquisar"
-                    type="search"
-                    value={search}
-                    setValue={setSearch}
-                />
-                <select>
+            <div className="Home__paineis">
+                <form onSubmit={event => handlePesquisar(event)} className="Home__pesquisa">
+                    <InputWithChanges
+                        label="Pesquisar"
+                        type="search"
+                        value={search}
+                        setValue={setSearch}
+                    />
+                    <Select option={categorias} title="Categoria" />
+                    <Button title="Pesquisar" />
+                </form>
+                <div>
                     {
-                        categoriaList.map(item => 
-                            <option>{item}</option>
-                        )
+                        gameListFiltered.map(item => (
+                            <Game id={item.id} title={item.nome} categoria={item.categoria} />
+                        ))
                     }
-                </select>
-                <div className="Login__button">
-                    <Button title="Enviar"/>
                 </div>
-            </form>
-            <div>
-                {
-                    gameListFiltered.map(item => (
-                        <Game id={item.id} title={item.nome} categoria={item.categoria} />
-                    ))
-                }
+                {/* <Link to="/edicao">
+                    <button>Recomendações</button>
+                </Link> */}
             </div>
-            <Link to="/edicao">
-                <button>Recomendações</button>
-            </Link>
         </div>
     )
 }

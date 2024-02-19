@@ -2,3 +2,19 @@
     height: 100vh;
     background-color: #532AEF;
 }
+
+.Home__paineis{
+    display: flex;
+    padding: 20px;
+}
+
+.Home__pesquisa{
+    display: flex;
+    background-color: white;
+    padding: 50px;
+    border-radius: 20px;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
