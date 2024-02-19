@@ -1,11 +1,14 @@
 import React from "react";
 import "./Cadastro.css"
 import Input from "../../components/input/Input.tsx";
-import Button from "../../components/buttonPrincipal/ButtonPrincipal.tsx";
+import ButtonPrincipal from "../../components/buttonPrincipal/ButtonPrincipal.tsx";
+import ButtonTertiary from '../../components/buttonTertiary/ButtonTertiary.tsx'
+import Title from '../../components/title/Title.tsx'
 import { save, get } from "../../controller/localStorage.tsx";
 import { USER_LIST } from "../../constant.tsx";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import { toastError, toastSuccess } from '../../controller/toast.tsx'
 import 'react-toastify/dist/ReactToastify.css';
 
 type userType = {
@@ -24,16 +27,7 @@ const Cadastro = () => {
     const handleCadastrarUsuario = (event: React.FormEvent) => {
         event.preventDefault()
         if (validarEmailDuplicado(event.target[1].value)) {
-            toast.error('E-mail já cadastrado', {
-                position: "top-center",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-            });
+            toastError('E-mail já cadastrado');
         } else {
             const newUser = {
                 id: new Date().getTime(),
@@ -45,16 +39,7 @@ const Cadastro = () => {
                 pais: event.target[5].value
             }
             save(USER_LIST, newUser)
-            toast.success('Usuário cadastrado', {
-                position: "top-center",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-            });
+            toastSuccess('Usuário cadastrado');
             setTimeout(() => navigate("/"), 3000)
         }
     }
@@ -62,6 +47,7 @@ const Cadastro = () => {
     return (
         <div className="Cadastro">
             <div className="Cadastro__form">
+                <Title title="Realize seu cadastro" />
                 <form onSubmit={event => handleCadastrarUsuario(event)} >
                     <Input label="Nome completo" type="text" />
                     <Input label="E-mail" type="email" />
@@ -69,15 +55,12 @@ const Cadastro = () => {
                     <Input label="Data de nascimento" type="date" />
                     <Input label="Estado" type="text" />
                     <Input label="País" type="text" />
-                    <div className="Cadastro__button">
-                        <Button title="Cadastrar" />
-                    </div>
+                    <ButtonPrincipal title="Cadastrar" />
                 </form>
-                <div className="Cadastro__back">
-                    <div onClick={() => navigate("/")} className="Cadastro__button">
-                        Voltar
-                    </div>
-                </div>
+                <ButtonTertiary
+                    title="Voltar"
+                    onCick={() => navigate("/")}
+                />
             </div>
             <ToastContainer />
         </div>

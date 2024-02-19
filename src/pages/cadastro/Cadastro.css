@@ -12,22 +12,3 @@
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     border-radius: 20px;
 }
-
-.Cadastro__button{
-    display: flex;
-    align-items: flex;
-    justify-content: center;
-}
-
-.Cadastro__back{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    font-size: 15px;
-    color: #532AEF;
-    margin: 20px
-}
-
-.Cadastro__button{
-    cursor: pointer;
-}

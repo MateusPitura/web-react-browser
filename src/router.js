@@ -2,7 +2,7 @@ import Welcome from './pages/welcome/Welcome.tsx'
 import Cadastro from './pages/cadastro/Cadastro.tsx';
 import Browser from './pages/browser/Browser.tsx';
 import Edicao from './pages/edicao/Edicao.tsx';
-import Games from './pages/games/Games.tsx';
+import Adm from './pages/adm/Adm.tsx';
 import Descricao from './pages/descricao/Descricao.tsx';
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -25,8 +25,8 @@ const router = createBrowserRouter([
         element: <Edicao/>
     },
     {
-        path: '/games',
-        element: <Games/>
+        path: '/adm',
+        element: <Adm/>
     },
     {
         path: '/descricao',

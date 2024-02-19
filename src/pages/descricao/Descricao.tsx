@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { get, set } from "../../controller/localStorage.tsx";
-import { GAMES } from "../../constant.tsx";
+import { GAME } from "../../constant.tsx";
 import Input from "../../components/input/Input.tsx";
 import Button from "../../components/buttonPrincipal/ButtonPrincipal.tsx";
 
@@ -19,7 +19,7 @@ const Descricao = () => {
     const [game, setGame] = useState();
 
     useEffect(() => {
-        setGameList(get(GAMES))
+        setGameList(get(GAME))
     }, [])
 
     useEffect(() => {
@@ -35,7 +35,7 @@ const Descricao = () => {
         event.preventDefault()
         const searchParams = new URLSearchParams(window.location.search);
         const id = searchParams.get('id');
-        const list = get(GAMES)
+        const list = get(GAME)
         list.map(item => {
             if (item.id.toString() === id) {
                 item.comentarios.push(event.target[0].value)
@@ -43,7 +43,7 @@ const Descricao = () => {
                 item.sumNotas+=Number(event.target[1].value)
             }
         })
-        set(GAMES, list)
+        set(GAME, list)
     }
 
     return (

@@ -1,0 +1,18 @@
+.Adm{
+    height: 100vh;
+    background-color: #532AEF;
+}
+
+.Adm__paineis{
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.Adm__form{
+    padding: 50px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}

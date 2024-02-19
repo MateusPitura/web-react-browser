@@ -7,9 +7,9 @@ type PropsType = {
 
 const ButtonPrincipal = (props: PropsType) => {
     return (
-        <label>
+        <label className="ButtonPrincipal">
             <input 
-                className="ButtonPrincipal"
+                className="ButtonPrincipal__input"
                 type="submit"
                 value={props.title}
             />

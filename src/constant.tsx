@@ -2,6 +2,6 @@ export const USER_LIST = 'usuarioList'
 
 export const USER_LOGADO = 'userLogado'
 
-export const GAMES = 'games'
+export const GAME = 'game'
 
-export const CATEGORIAS = 'categorias'
+export const CATEGORIA = 'categoria'

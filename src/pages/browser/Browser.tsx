@@ -4,7 +4,7 @@ import InputWithChanges from "../../components/inputWithChanges/InputWithChanges
 import Game from "../../components/game/Game.tsx";
 import Button from "../../components/buttonPrincipal/ButtonPrincipal.tsx";
 import { get } from '../../controller/localStorage.tsx'
-import { GAMES, CATEGORIAS } from "../../constant.tsx";
+import { GAME, CATEGORIA } from "../../constant.tsx";
 
 const Browser = () => {
 
@@ -14,8 +14,8 @@ const Browser = () => {
     const [categoriaList, setCategoriaList] = useState([])
 
     useEffect(() => {
-        setGameList(get(GAMES))
-        setCategoriaList(get(CATEGORIAS))
+        setGameList(get(GAME))
+        setCategoriaList(get(CATEGORIA))
     }, [])
 
     const handlePesquisar = (event) => {

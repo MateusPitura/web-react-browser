@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import './Welcome.css'
 import { useNavigate } from "react-router-dom";
 import ButtonSecondary from "../../components/buttonSecondary/ButtonSecondary.tsx";
 import ButtonPrincipal from "../../components/buttonPrincipal/ButtonPrincipal.tsx";
 import Input from "../../components/input/Input.tsx";
+import Title from '../../components/title/Title.tsx'
+import ButtonTeriary from '../../components/buttonTertiary/ButtonTertiary.tsx'
 import { get, set } from "../../controller/localStorage.tsx";
 import { USER_LIST, USER_LOGADO } from "../../constant.tsx";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import { toastError } from '../../controller/toast.tsx'
 
 type loginType = {
     email: string,
@@ -16,8 +19,6 @@ type loginType = {
 const Welcome = () => {
 
     const navigate = useNavigate()
-
-    const [userNotFound, setUserNotFound] = useState(false)
 
     const handleValidarLogin = (event: React.FormEvent) => {
         event.preventDefault()
@@ -31,42 +32,28 @@ const Welcome = () => {
             set(USER_LOGADO, currentUser)
             navigate("/browser")
         } else {
-            toast.error('Usuário e/ou senha inválidos', {
-                position: "top-center",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-            });
+            toastError('Usuário e/ou senha inválidos')
         }
     }
 
     return (
         <div className="Welcome">
             <div className="Welcome__form">
-                <div className="Welcome__title">
-                    Seja bem-vindo!
-                </div>
+                <Title title="Seja bem-vindo!" />
                 <form onSubmit={event => handleValidarLogin(event)}>
                     <Input label="E-mail" type="email" />
                     <Input label="Senha" type="password" />
-                    <div className="Welcome__login">
-                        <ButtonPrincipal title="Login" />
-                    </div>
+                    <ButtonPrincipal title="Login" />
                 </form>
-                <div onClick={() => navigate("/cadastro")} className="Welcome__cadastro">
+                <div onClick={() => navigate("/cadastro")}>
                     <ButtonSecondary title="Criar cadastro" />
                 </div>
-                <div className="Welcome__adm">
-                    <div onClick={() => navigate("/games")} className="Welcome__button">
-                        Acesso restrito
-                    </div>
-                </div>
+                <ButtonTeriary
+                    title="Acesso restrito"
+                    onCick={() => navigate("/adm")}
+                />
             </div>
-            <ToastContainer/>
+            <ToastContainer />
         </div>
     )
 }

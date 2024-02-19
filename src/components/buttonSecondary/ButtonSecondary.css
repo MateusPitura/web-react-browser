@@ -1,4 +1,10 @@
 .ButtonSecondary{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ButtonSecondary__input{
     padding: 10px;
     margin: 10px;
     font-size: 20px;

@@ -1,0 +1,12 @@
+.ButtonTertiary{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    color: #532AEF;
+    margin: 20px
+}
+
+.ButtonTertiary__button{
+    cursor: pointer;
+}

@@ -1,0 +1,38 @@
+.Select{
+    display: flex;
+    padding: 10px;
+    margin: 10px;
+}
+
+.Select__label{
+    display: flex;
+    flex: 3;
+    align-items: center;
+    padding-right: 10px;
+    color: #0C0A09;
+    font-size: 20px;
+}
+
+.Select__select{
+    border-radius: 5px;
+    display: flex;
+    flex: 7;
+    padding: 10px;
+    padding-left: 10px;
+    caret-color: #532AEF;
+    border: none;
+    width: 100%;
+    font-size: 20px;
+    color: #0C0A09;
+    background-color: #E7E5E4;
+}
+
+.Select__select:focus{
+    outline: none
+}
+
+.Select__option{
+    background-color: #E7E5E4;
+    color: #0C0A09;
+}
+

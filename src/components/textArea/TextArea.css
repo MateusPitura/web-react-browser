@@ -1,0 +1,35 @@
+.TextArea{
+    display: flex;
+    padding: 10px;
+    margin: 10px;
+}
+
+.TextArea__label{
+    display: flex;
+    flex: 3;
+    align-items: center;
+    padding-right: 10px;
+    color: #0C0A09;
+    font-size: 20px;
+}
+
+.TextArea__field{
+    border-radius: 5px;
+    display: flex;
+    flex: 7;
+    padding: 10px;
+    padding-left: 10px;
+    caret-color: #532AEF;
+    border: none;
+    width: 100%;
+    font-size: 20px;
+    color: #0C0A09;
+    background-color: #E7E5E4;
+    resize: none;
+    font-family: 'Ubuntu';
+}
+
+.TextArea__field:focus{
+    outline: none
+}
+
