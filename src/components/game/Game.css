@@ -1,20 +1,44 @@
 .Game{
     display: flex;
-    background-color: #BFDBFE;
+    flex: 1;
+    background-color: white;
     padding: 20px;
     margin: 20px;
     border-radius: 20px;
-    column-gap: 20px
+    column-gap: 20px;
+    height: 300px;
+    max-width: 300px;
+    min-width: 200px;
+    cursor: pointer;
+    flex-direction: column;
+}
+
+.Game__imageContainer{
+    display: flex;
+    flex: 6;
+}
+
+.Game__image{
+    border-radius: 10px;
+    object-fit: cover;
 }
 
 .Game__title{
+    display: flex;
+    flex: 2;
+    align-items: flex-start;
+    justify-content: flex-start;
     font-size: 20px;
     color: #0C0A09;
+    padding: 5px;
 }
 
 .Game__categoria{
     display: flex;
-    align-items: center;
+    flex: 1;
+    align-items: flex-end;
+    justify-content: flex-start;
     font-size: 15px;
-    color: #78716C
+    color: #532AEF;
+    padding: 5px;
 }

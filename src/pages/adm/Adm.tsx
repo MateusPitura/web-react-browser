@@ -12,6 +12,7 @@ import { get, save, set } from "../../controller/localStorage.tsx";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import { toastSuccess } from '../../controller/toast.tsx'
+import { GAME_MOCK, CATEGORIA_MOCK } from "../../mock.tsx";
 
 const Adm = () => {
 
@@ -63,6 +64,13 @@ const Adm = () => {
         toastSuccess('Jogo criado');
     }
 
+    const handleCarregarMock = (event: any) => {
+        event.preventDefault()
+        set(GAME, GAME_MOCK)
+        set(CATEGORIA, CATEGORIA_MOCK)
+        toastSuccess('Mock carregado');
+    }
+
     return (
         <div className="Adm">
             <Header>
@@ -94,9 +102,15 @@ const Adm = () => {
                         <Select option={categorias} title="Categoria" />
                         <Input label="Link" type="url" />
                         <Input label="Trailer" type="url" />
-                        <TextArea title="Descrição"/>
-                        <Input label="Imagem" type="file" />
+                        <TextArea title="Descrição" />
+                        <Input label="Imagem" type="url" />
                         <ButtonPrincipal title="Criar" />
+                    </form>
+                </div>
+                <div className="Adm__form">
+                    <Title title="Carregar mock" />
+                    <form onSubmit={event => handleCarregarMock(event)}>
+                        <ButtonPrincipal title="Carregar" />
                     </form>
                 </div>
             </div>

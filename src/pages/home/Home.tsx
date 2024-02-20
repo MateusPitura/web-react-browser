@@ -74,13 +74,18 @@ const Home = () => {
                     <Select option={categorias} title="Categoria" />
                     <Button title="Pesquisar" />
                 </form>
-                <div>
+            </div>
+            <div className="Home__resultado">
                     {
                         gameListFiltered.map(item => (
-                            <Game id={item.id} title={item.nome} categoria={item.categoria} />
+                            <Game 
+                                id={item.id} 
+                                title={item.nome} 
+                                categoria={item.categoria} 
+                                imagem={item.imagem}
+                            />
                         ))
                     }
-                </div>
                 {/* <Link to="/edicao">
                     <button>Recomendações</button>
                 </Link> */}

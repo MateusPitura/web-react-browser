@@ -18,3 +18,8 @@
     justify-content: flex-start;
     flex-wrap: wrap;
 }
+
+.Home__resultado{
+    display: flex;
+    flex-wrap: wrap;
+}
