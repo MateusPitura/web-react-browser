@@ -4,7 +4,7 @@ import InputWithChanges from "../../components/inputWithChanges/InputWithChanges
 import Game from "../../components/game/Game.tsx";
 import Button from "../../components/buttonPrincipal/ButtonPrincipal.tsx";
 import { get } from '../../controller/localStorage.tsx'
-import { GAME, CATEGORIA } from "../../constant.tsx";
+import { GAME_LIST, CATEGORIA } from "../../constant.tsx";
 import Header from '../../components/header/Header.tsx'
 import ButtonTertiary from "../../components/buttonTertiary/ButtonTertiary.tsx";
 import ButtonSecondary from "../../components/buttonSecondary/ButtonSecondary.tsx"
@@ -14,8 +14,10 @@ import { USER_LOGADO } from "../../constant.tsx";
 import Select from "../../components/select/Select.tsx";
 
 type gameType = {
+    id: number,
     nome: string,
-    categoria: string
+    categoria: string,
+    imagem: string,
 }
 
 const Home = () => {
@@ -33,7 +35,7 @@ const Home = () => {
     }
 
     useEffect(() => {
-        setGameList(get(GAME))
+        setGameList(get(GAME_LIST))
         setCategorias(get(CATEGORIA));
     }, [])
 
@@ -76,19 +78,17 @@ const Home = () => {
                 </form>
             </div>
             <div className="Home__resultado">
-                    {
-                        gameListFiltered.map(item => (
-                            <Game 
-                                id={item.id} 
-                                title={item.nome} 
-                                categoria={item.categoria} 
-                                imagem={item.imagem}
-                            />
-                        ))
-                    }
-                {/* <Link to="/edicao">
-                    <button>Recomendações</button>
-                </Link> */}
+                {
+                    gameListFiltered.map((item: gameType) => (
+                        <Game
+                            id={item.id}
+                            title={item.nome}
+                            categoria={item.categoria}
+                            imagem={item.imagem}
+                            key={item.id}
+                        />
+                    ))
+                }
             </div>
         </div>
     )

@@ -1,6 +1,8 @@
 import React from "react";
 import './Game.css'
 import { useNavigate } from "react-router-dom";
+import { GAME_SELECT } from "../../constant.tsx";
+import { set } from "../../controller/localStorage.tsx";
 
 type propsType = {
     id: number,
@@ -13,12 +15,15 @@ const Game = (props: propsType) => {
 
     const navigate = useNavigate()
 
-    const number = 400 + Number((Math.random() * 100).toFixed())
+    const handleAcessarDescricao = () => {
+        set(GAME_SELECT, props.id)
+        navigate("/descricao")
+    }
 
     return (
-        <div onClick={()=>{navigate(`/descricao?id=${props.id}`)}} className="Game">
+        <div onClick={()=>handleAcessarDescricao()} className="Game">
             <div className="Game__imageContainer">
-                <img className="Game__image" src={`${props.imagem}/${number}`} height={200} width={400}/>
+                <img className="Game__image" src={props.imagem} height={'100%'} width={'100%'}/>
             </div>
             <div className="Game__title">
                 {props.title}

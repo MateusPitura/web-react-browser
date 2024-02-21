@@ -7,12 +7,12 @@ import Title from '../../components/title/Title.tsx'
 import Header from "../../components/header/Header.tsx";
 import Select from "../../components/select/Select.tsx";
 import TextArea from "../../components/textArea/TextArea.tsx";
-import { CATEGORIA, GAME } from "../../constant.tsx";
+import { CATEGORIA, GAME_LIST } from "../../constant.tsx";
 import { get, save, set } from "../../controller/localStorage.tsx";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import { toastSuccess } from '../../controller/toast.tsx'
-import { GAME_MOCK, CATEGORIA_MOCK } from "../../mock.tsx";
+import { GAME_LIST_MOCK, CATEGORIA_MOCK } from "../../mock.tsx";
 
 const Adm = () => {
 
@@ -60,13 +60,13 @@ const Adm = () => {
             sumNotasAvaliacoes: 0,
             comentarios: [],
         }
-        save(GAME, newGame)
+        save(GAME_LIST, newGame)
         toastSuccess('Jogo criado');
     }
 
     const handleCarregarMock = (event: any) => {
         event.preventDefault()
-        set(GAME, GAME_MOCK)
+        set(GAME_LIST, GAME_LIST_MOCK)
         set(CATEGORIA, CATEGORIA_MOCK)
         toastSuccess('Mock carregado');
     }
@@ -107,12 +107,12 @@ const Adm = () => {
                         <ButtonPrincipal title="Criar" />
                     </form>
                 </div>
-                <div className="Adm__form">
+                {/* <div className="Adm__form">
                     <Title title="Carregar mock" />
                     <form onSubmit={event => handleCarregarMock(event)}>
                         <ButtonPrincipal title="Carregar" />
                     </form>
-                </div>
+                </div> */}
             </div>
             <ToastContainer />
         </div>

@@ -20,7 +20,7 @@
 
 .Game__image{
     border-radius: 10px;
-    object-fit: cover;
+    object-fit:cover
 }
 
 .Game__title{

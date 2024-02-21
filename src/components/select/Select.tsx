@@ -15,7 +15,7 @@ const Select = (props: PropsType) => {
             <select className="Select__select">
                 {
                     props.option.map(item =>
-                        <option className="Select__option">{item}</option>
+                        <option className="Select__option" key={props.option.indexOf(item)}>{item}</option>
                     )
                 }
             </select>

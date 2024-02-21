@@ -1,0 +1,39 @@
+.Descricao {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-color: #532AEF;
+}
+
+.Descricao__form{
+    padding: 50px;
+    background-color: white;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 20px;
+}
+
+.Descricao__categoria{
+    color: #0C0A09;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+}
+
+.Descricao__link{
+    color: #0C0A09;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 10px;
+}
+
+.Descricao__link a{
+    color: #532AEF;
+    text-decoration: none;    
+}
+
