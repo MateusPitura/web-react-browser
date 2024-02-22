@@ -7,6 +7,7 @@ import ButtonPrincipal from "../../components/buttonPrincipal/ButtonPrincipal.ts
 import ButtonTeriary from '../../components/buttonTertiary/ButtonTertiary.tsx'
 import Title from '../../components/title/Title.tsx'
 import Header from "../../components/header/Header.tsx";
+import { useNavigate } from "react-router-dom";
 
 type gameType = {
     id: number,
@@ -23,6 +24,8 @@ const Descricao = () => {
 
     const [gameList, setGameList] = useState<gameType[]>([]);
     const [game, setGame] = useState<gameType>();
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         setGameList(get(GAME_LIST))
@@ -51,33 +54,39 @@ const Descricao = () => {
 
     return (
         <div className="Descricao">
-            <div className="Descricao__form">
-                <Title title={game?.nome ? game?.nome : ""} />
-                <div className="Descricao__categoria">
-                    {game?.categoria}
-                </div>
-                <div className="Descricao__link">
-                    Link:
-                    <a target="_blank" href={game?.link}>{game?.link}</a>
-                </div>
-                <div>
-                    <iframe 
-                        width="560" 
-                        height="315" 
-                        src={game?.trailer} 
-                        title="YouTube video player" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        allowfullscreen></iframe>
-                    {/* {game?.trailer} */}
-                </div>
-                <div>
-                    {game?.descricao}
-                </div>
-                <div>
-                    {game?.imagem}
-                </div>
-                {/* <div>
+            <Header>
+                <ButtonTeriary
+                    title="Voltar"
+                    onClick={() => navigate("/home")}
+                />
+            </Header>
+            <div className="Descricao__paineis">
+                <div className="Descricao__form">
+                    <Title title={game?.nome ? game?.nome : ""} />
+                    <div className="Descricao__categoria">
+                        {game?.categoria}
+                    </div>
+                    <div className="Descricao__link">
+                        Link:
+                        <a target="_blank" href={game?.link}>{game?.link}</a>
+                    </div>
+                    <div className="Descricao__trailer">
+                        <iframe
+                            width="560"
+                            height="315"
+                            src={game?.trailer}
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div className="Descricao__descricao">
+                        {game?.descricao}
+                    </div>
+                    <div className="Descricao__imagem">
+                        <img className="Game__image" src={game?.imagem} height={'50%'} width={'50%'} />
+                    </div>
+                    {/* <div>
                 {game?.sumNotas / game?.countAvaliacoes}
             </div>
             {
@@ -85,13 +94,14 @@ const Descricao = () => {
                     <div>{item}</div>
                 )
             } */}
-                {/* <form onSubmit={event => handleCadastrarComentario(event)}>
+                    {/* <form onSubmit={event => handleCadastrarComentario(event)}>
                 <Input label="Comentário" type="text" />
                 <Input label="Nota" type="number" />
                 <div>
                     <Button title="Inserir comentário" />
                 </div>
             </form> */}
+                </div>
             </div>
         </div>
     )

@@ -1,9 +1,13 @@
 .Descricao {
+    height: '100%';
+    background-color: #532AEF;
+}
+
+.Descricao__paineis{
     display: flex;
-    height: 100vh;
     align-items: center;
     justify-content: center;
-    background-color: #532AEF;
+    padding: 20px
 }
 
 .Descricao__form{
@@ -34,6 +38,29 @@
 
 .Descricao__link a{
     color: #532AEF;
-    text-decoration: none;    
+    text-decoration: none;   
+    cursor: pointer;
 }
 
+.Descricao__trailer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.Descricao__descricao{
+    max-width: 560px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    text-align: center;
+}
+
+.Descricao__imagem{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px
+}
