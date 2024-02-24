@@ -26,7 +26,8 @@ type gameType = {
     comentarios: {
         id: number,
         text: string
-    }[]
+    }[],
+    rate: number
 }
 
 const Descricao = () => {
@@ -99,6 +100,7 @@ const Descricao = () => {
                 item.comentarios.push(newComentario)
                 item.countAvaliacoes++
                 item.sumNotasAvaliacoes += Number(event.target[1].value)
+                item.rate = (item.sumNotasAvaliacoes/item.countAvaliacoes)
             }
             return item
         })

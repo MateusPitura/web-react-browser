@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import InputWithChanges from "../../components/inputWithChanges/InputWithChanges.tsx";
 import Game from "../../components/game/Game.tsx";
-import Button from "../../components/buttonPrincipal/ButtonPrincipal.tsx";
+import ButtonPrincipal from "../../components/buttonPrincipal/ButtonPrincipal.tsx";
 import { get } from '../../controller/localStorage.tsx'
 import { GAME_LIST, CATEGORIA } from "../../constant.tsx";
 import Header from '../../components/header/Header.tsx'
@@ -18,6 +18,12 @@ type gameType = {
     nome: string,
     categoria: string,
     imagem: string,
+    countAvaliacoes: number,
+    sumNotasAvaliacoes: number,
+    rate: number,
+    comentarios: {
+        id: number,
+    }[]
 }
 
 const Home = () => {
@@ -53,6 +59,23 @@ const Home = () => {
         }
     }
 
+    const handleRecomendacoes = () => {
+        const userLogado = get(USER_LOGADO)
+        const gameNotRateList = gameList.filter((item: gameType) => {
+            const comentario = item.comentarios.find(item =>
+                item.id === userLogado.id
+            )
+            if (!comentario) {
+                return true
+            }
+            return false
+        })
+        gameNotRateList.sort((a: gameType, b: gameType) =>
+            b.rate - a.rate
+        )
+        setGameListFiltered(gameNotRateList)
+    }
+
     return (
         <div className="Home">
             <Header>
@@ -74,7 +97,11 @@ const Home = () => {
                         setValue={setSearch}
                     />
                     <Select option={categorias} title="Categoria" />
-                    <Button title="Pesquisar" />
+                    <ButtonPrincipal title="Pesquisar" />
+                    <ButtonSecondary
+                        title="Recomendações"
+                        onClick={handleRecomendacoes}
+                    />
                 </form>
             </div>
             <div className="Home__resultado">

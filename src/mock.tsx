@@ -10,7 +10,8 @@ export const GAME_LIST_MOCK =
             "imagem": "https://fastly.picsum.photos/id/835/300/200.jpg?hmac=6prW6m5NwhylSB-z_Eua5kDJCj_bVP9kNvn75jipl6U",
             "countAvaliacoes": 0,
             "sumNotasAvaliacoes": 0,
-            "comentarios": []
+            "comentarios": [],
+            "rate": 0
         },
         {
             "id": 1708303165888,
@@ -22,7 +23,8 @@ export const GAME_LIST_MOCK =
             "imagem": "https://fastly.picsum.photos/id/250/300/200.jpg?hmac=GL3qg4nFl5T5EDz21-N2avO_UPBxYd6rBkLY82koT4c",
             "countAvaliacoes": 0,
             "sumNotasAvaliacoes": 0,
-            "comentarios": []
+            "comentarios": [],
+            "rate": 0
         },
         {
             "id": 1708303165889,
@@ -34,7 +36,8 @@ export const GAME_LIST_MOCK =
             "imagem": "https://fastly.picsum.photos/id/356/300/200.jpg?hmac=uvy_on5JQ9Bq8sHwcuVFCelljBkrvcHhByvWcRIPugk",
             "countAvaliacoes": 0,
             "sumNotasAvaliacoes": 0,
-            "comentarios": []
+            "comentarios": [],
+            "rate": 0
         },
         {
             "id": 1708303165890,
@@ -46,7 +49,8 @@ export const GAME_LIST_MOCK =
             "imagem": "https://fastly.picsum.photos/id/863/300/200.jpg?hmac=tESQrxwke53bj0_NtRO8p5Dp-gpa7Akhl7XVco624ZI",
             "countAvaliacoes": 0,
             "sumNotasAvaliacoes": 0,
-            "comentarios": []
+            "comentarios": [],
+            "rate": 0
         },
         {
             "id": 1708303165891,
@@ -58,7 +62,8 @@ export const GAME_LIST_MOCK =
             "imagem": "https://fastly.picsum.photos/id/891/300/200.jpg?hmac=6WZ-PsVTKW4MpMFI7IShIIsv0pwn0RV0BGHlBwwP18o",
             "countAvaliacoes": 0,
             "sumNotasAvaliacoes": 0,
-            "comentarios": []
+            "comentarios": [],
+            "rate": 0
         },
         {
             "id": 1708303165892,
@@ -70,7 +75,8 @@ export const GAME_LIST_MOCK =
             "imagem": "https://fastly.picsum.photos/id/1083/300/200.jpg?hmac=m2DE7WBYrzGFXpnQnkwsom49G3YycTZkFbj7F-fBGkU",
             "countAvaliacoes": 0,
             "sumNotasAvaliacoes": 0,
-            "comentarios": []
+            "comentarios": [],
+            "rate": 0
         },
         {
             "id": 1708303165893,
@@ -82,7 +88,8 @@ export const GAME_LIST_MOCK =
             "imagem": "https://fastly.picsum.photos/id/846/300/200.jpg?hmac=6r8o1I6t8lwnAIKIKrcjBMLdig9RQCno8P8iYSwL4I4",
             "countAvaliacoes": 0,
             "sumNotasAvaliacoes": 0,
-            "comentarios": []
+            "comentarios": [],
+            "rate": 0
         },
         {
             "id": 1708303165894,
@@ -94,7 +101,8 @@ export const GAME_LIST_MOCK =
             "imagem": "https://fastly.picsum.photos/id/96/300/200.jpg?hmac=84BsRRLZwGEgjzgb4fiRjRpDrUle1LIaJOwrJEF8V5M",
             "countAvaliacoes": 0,
             "sumNotasAvaliacoes": 0,
-            "comentarios": []
+            "comentarios": [],
+            "rate": 0
         },
         {
             "id": 1708303165895,
@@ -106,7 +114,8 @@ export const GAME_LIST_MOCK =
             "imagem": "https://fastly.picsum.photos/id/143/300/200.jpg?hmac=H72th9mSiyGFlh2x1MkbiukTJ32FtSeREnHX9WMrBfQ",
             "countAvaliacoes": 0,
             "sumNotasAvaliacoes": 0,
-            "comentarios": []
+            "comentarios": [],
+            "rate": 0
         },
         {
             "id": 1708303165896,
@@ -118,7 +127,8 @@ export const GAME_LIST_MOCK =
             "imagem": "https://fastly.picsum.photos/id/818/300/200.jpg?hmac=un4drnTw0B6hQJVNaHFeeF2vvgFWy2l_OYs5hy5CaxE",
             "countAvaliacoes": 0,
             "sumNotasAvaliacoes": 0,
-            "comentarios": []
+            "comentarios": [],
+            "rate": 0
         },
         {
             "id": 1708303165897,
@@ -130,7 +140,8 @@ export const GAME_LIST_MOCK =
             "imagem": "https://fastly.picsum.photos/id/217/300/200.jpg?hmac=AMJTeuH1djqJFovjUPlZmy82D3SyUozDw1OMDvnkpN4",
             "countAvaliacoes": 0,
             "sumNotasAvaliacoes": 0,
-            "comentarios": []
+            "comentarios": [],
+            "rate": 0
         },
         {
             "id": 1708303165898,
@@ -142,7 +153,8 @@ export const GAME_LIST_MOCK =
             "imagem": "https://fastly.picsum.photos/id/99/300/200.jpg?hmac=U4YQmefe3Ng4IlKBytiAxUQdgd11VBNO59_0wZNOxPk",
             "countAvaliacoes": 0,
             "sumNotasAvaliacoes": 0,
-            "comentarios": []
+            "comentarios": [],
+            "rate": 0
         },
         {
             "id": 1708303165899,
@@ -154,7 +166,8 @@ export const GAME_LIST_MOCK =
             "imagem": "https://fastly.picsum.photos/id/880/300/200.jpg?hmac=uu8vcRX1wdpexC-9OShT3RuBwAz_ktz_NMDmTjfWvjc",
             "countAvaliacoes": 0,
             "sumNotasAvaliacoes": 0,
-            "comentarios": []
+            "comentarios": [],
+            "rate": 0
         },
         {
             "id": 1708303165900,
@@ -166,7 +179,8 @@ export const GAME_LIST_MOCK =
             "imagem": "https://fastly.picsum.photos/id/153/300/200.jpg?hmac=O3YmZD80o8OUEEdCAfxOZwMEIlH7_NZ3RsJBxqEA028",
             "countAvaliacoes": 0,
             "sumNotasAvaliacoes": 0,
-            "comentarios": []
+            "comentarios": [],
+            "rate": 0
         },
         {
             "id": 1708303165901,
@@ -178,7 +192,8 @@ export const GAME_LIST_MOCK =
             "imagem": "https://fastly.picsum.photos/id/780/300/200.jpg?hmac=qdomdN6fLXXaqFaTPUFovUhzlpfYKS_MjUthi5dCWWw",
             "countAvaliacoes": 0,
             "sumNotasAvaliacoes": 0,
-            "comentarios": []
+            "comentarios": [],
+            "rate": 0
         },
         {
             "id": 1708303165902,
@@ -190,7 +205,8 @@ export const GAME_LIST_MOCK =
             "imagem": "https://fastly.picsum.photos/id/238/300/200.jpg?hmac=7sscr7sm3lmziy5VYZR9D3psQi7vltiVEaoux0v0s0M",
             "countAvaliacoes": 0,
             "sumNotasAvaliacoes": 0,
-            "comentarios": []
+            "comentarios": [],
+            "rate": 0
         },
         {
             "id": 1708303165903,
@@ -202,7 +218,8 @@ export const GAME_LIST_MOCK =
             "imagem": "https://fastly.picsum.photos/id/146/300/200.jpg?hmac=o91G3WwGghvkn1qLVNeCwLQVNWnrHlvRhgm_kPi4k40",
             "countAvaliacoes": 0,
             "sumNotasAvaliacoes": 0,
-            "comentarios": []
+            "comentarios": [],
+            "rate": 0
         },
         {
             "id": 1708303165904,
@@ -214,7 +231,8 @@ export const GAME_LIST_MOCK =
             "imagem": "https://fastly.picsum.photos/id/807/300/200.jpg?hmac=gWP12VdF9_c6OalRsEc0yo3dhDQ5MxQuP-mTfY8UEXI",
             "countAvaliacoes": 0,
             "sumNotasAvaliacoes": 0,
-            "comentarios": []
+            "comentarios": [],
+            "rate": 0
         },
         {
             "id": 1708303165905,
@@ -226,7 +244,8 @@ export const GAME_LIST_MOCK =
             "imagem": "https://fastly.picsum.photos/id/851/300/200.jpg?hmac=QIOyQA85AqYyJQxUrHap6codpDFH-xnUTEQ_lKf-9Qg",
             "countAvaliacoes": 0,
             "sumNotasAvaliacoes": 0,
-            "comentarios": []
+            "comentarios": [],
+            "rate": 0
         },
         {
             "id": 1708303165906,
@@ -238,7 +257,8 @@ export const GAME_LIST_MOCK =
             "imagem": "https://fastly.picsum.photos/id/425/300/200.jpg?hmac=kAaOV1gnGa3vs85LhkvP1SxTYQFk0A8lu4lq2jGYk9s",
             "countAvaliacoes": 0,
             "sumNotasAvaliacoes": 0,
-            "comentarios": []
+            "comentarios": [],
+            "rate": 0
         }
     ]
 
