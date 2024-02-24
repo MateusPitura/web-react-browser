@@ -47,16 +47,16 @@ const Descricao = () => {
     const handleCadastrarComentario = (event: React.FormEvent) => {
         event.preventDefault()
         const id = get(GAME_SELECT)
-        gameList.map(item => {
+        const gameListUpdated = gameList.map(item => {
             if (item.id === id) {
-                console.log("B")
                 item.comentarios.push(event.target[0].value)
                 item.countAvaliacoes++
                 item.sumNotasAvaliacoes += Number(event.target[1].value)
             }
+            return item
         })
-        set(GAME_LIST, gameList)
-        setGameList(gameList)
+        set(GAME_LIST, gameListUpdated)
+        setGameList(gameListUpdated)
         toastSuccess("Avaliação cadastrada")
     }
 
@@ -108,10 +108,14 @@ const Descricao = () => {
                     </form>
                 </div>
                 <div className="Descricao__form">
-                    <Title title="Comentários"/>
+                    <Title title="Comentários" />
                     {
                         game?.comentarios.map(item =>
-                            <div className="Descricao__comentario">{item}</div>
+                            <div
+                                key={game?.comentarios.indexOf(item)}
+                                className="Descricao__comentario"
+                            >{item}
+                            </div>
                         )
                     }
                 </div>
