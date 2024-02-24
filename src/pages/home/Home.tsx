@@ -89,20 +89,22 @@ const Home = () => {
                 />
             </Header>
             <div className="Home__paineis">
-                <form onSubmit={event => handlePesquisar(event)} className="Home__pesquisa">
-                    <InputWithChanges
-                        label="Pesquisar"
-                        type="search"
-                        value={search}
-                        setValue={setSearch}
-                    />
-                    <Select option={categorias} title="Categoria" />
-                    <ButtonPrincipal title="Pesquisar" />
+                <div className="Home__pesquisa">
+                    <form onSubmit={event => handlePesquisar(event)} className="Home__formulario">
+                        <InputWithChanges
+                            label="Pesquisar"
+                            type="search"
+                            value={search}
+                            setValue={setSearch}
+                        />
+                        <Select option={categorias} title="Categoria" />
+                        <ButtonPrincipal title="Pesquisar" />
+                    </form>
                     <ButtonSecondary
                         title="Recomendações"
                         onClick={handleRecomendacoes}
                     />
-                </form>
+                </div>
             </div>
             <div className="Home__resultado">
                 {
