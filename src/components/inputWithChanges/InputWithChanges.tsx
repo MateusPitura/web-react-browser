@@ -19,6 +19,7 @@ const InputWithChanges = (props: PropsType) => {
                 type={props.type}
                 value={props.value}
                 onChange={(e)=>props.setValue(e.target.value)}
+                required
             />
         </label>
     )

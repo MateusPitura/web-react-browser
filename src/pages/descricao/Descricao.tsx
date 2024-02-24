@@ -126,9 +126,7 @@ const Descricao = () => {
                     <div className="Descricao__nota">
                         Nota:
                         <div>
-                            {((game?.sumNotasAvaliacoes ? game?.sumNotasAvaliacoes : 1)
-                                /
-                                (game?.countAvaliacoes ? game?.countAvaliacoes : 1)).toFixed(2)}
+                            {(game?.rate??0).toFixed(2)}
                         </div>
                     </div>
                     <div className="Descricao__imagem">

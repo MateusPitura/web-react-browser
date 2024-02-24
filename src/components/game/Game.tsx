@@ -7,7 +7,7 @@ import { set } from "../../controller/localStorage.tsx";
 type propsType = {
     id: number,
     title: string,
-    categoria: string,
+    rate: number,
     imagem: string,
 }
 
@@ -29,7 +29,7 @@ const Game = (props: propsType) => {
                 {props.title}
             </div>
             <div className="Game__categoria">
-                {props.categoria}
+                {props.rate}
             </div>
         </div>
     )

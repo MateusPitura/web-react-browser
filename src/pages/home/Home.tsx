@@ -110,7 +110,7 @@ const Home = () => {
                         <Game
                             id={item.id}
                             title={item.nome}
-                            categoria={item.categoria}
+                            rate={item.rate}
                             imagem={item.imagem}
                             key={item.id}
                         />
