@@ -1,6 +1,7 @@
 .Welcome{
     display: flex;
-    height: 100vh;
+    height: '100%';
+    min-height: 100vh;
     background-image: url("../../assets/image/background.png");
     background-repeat: no-repeat;
     background-size: cover;
