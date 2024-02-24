@@ -3,6 +3,7 @@ import "./Descricao.css"
 import { get, set } from "../../controller/localStorage.tsx";
 import { GAME_LIST, GAME_SELECT, USER_LOGADO } from "../../constant.tsx";
 import InputWithLimits from "../../components/inputWithLimits/InputWithLimits.tsx";
+import InputWithChanges from "../../components/inputWithChanges/InputWithChanges.tsx";
 import ButtonPrincipal from "../../components/buttonPrincipal/ButtonPrincipal.tsx";
 import TextArea from "../../components/textArea/TextArea.tsx";
 import ButtonTeriary from '../../components/buttonTertiary/ButtonTertiary.tsx'
@@ -32,7 +33,8 @@ const Descricao = () => {
 
     const [gameList, setGameList] = useState<gameType[]>([]);
     const [game, setGame] = useState<gameType>();
-    const [comentarioPreviousRegistered, setComentarioPreviousRegistered] = useState(false)
+    const [isComentarioPreviousRegistered, setIsComentarioPreviousRegistered] = useState(false)
+    const [comentario, setComentario] = useState("")
 
     const navigate = useNavigate()
 
@@ -51,14 +53,38 @@ const Descricao = () => {
             item.id == userLogado.id
         )
         if (comentarioPreviousRegisteredTemp) {
-            console.log(comentarioPreviousRegisteredTemp)
-            setComentarioPreviousRegistered(true)
+            setIsComentarioPreviousRegistered(true)
+            setComentario(comentarioPreviousRegisteredTemp.text)
         }
     }, [gameList])
 
+    const handleAlterarComentario = (event: React.FormEvent) => {
+        event.preventDefault()
+        if (!isComentarioPreviousRegistered) {
+            toastError("Avalie o jogo antes")
+            return
+        }
+        const id = get(GAME_SELECT)
+        const userLogado = get(USER_LOGADO)
+        const gameListUpdated = gameList.map(item => {
+            if (item.id === id) {
+                item.comentarios.map(item => {
+                    if(item.id === userLogado.id){
+                        item.text = comentario
+                    }
+                    return item
+                })
+            }
+            return item
+        })
+        set(GAME_LIST, gameListUpdated)
+        setGameList(gameListUpdated)
+        toastSuccess("Comentário alterado")
+    }
+
     const handleCadastrarComentario = (event: React.FormEvent) => {
         event.preventDefault()
-        if (comentarioPreviousRegistered) {
+        if (isComentarioPreviousRegistered) {
             toastError("Jogo já avaliado")
             return
         }
@@ -95,6 +121,14 @@ const Descricao = () => {
                     <div className="Descricao__descricao">
                         {game?.descricao}
                     </div>
+                    <div className="Descricao__nota">
+                        Nota:
+                        <div>
+                            {((game?.sumNotasAvaliacoes ? game?.sumNotasAvaliacoes : 1)
+                                /
+                                (game?.countAvaliacoes ? game?.countAvaliacoes : 1)).toFixed(2)}
+                        </div>
+                    </div>
                     <div className="Descricao__imagem">
                         <img className="Game__image" src={game?.imagem} height={'50%'} width={'50%'} />
                     </div>
@@ -112,17 +146,12 @@ const Descricao = () => {
                 </div>
                 <div className="Descricao__form">
                     <Title title="Avalie o jogo" />
-                    <div className="Descricao__nota">
-                        Nota:
-                        <div>
-                            {((game?.sumNotasAvaliacoes ? game?.sumNotasAvaliacoes : 1)
-                                /
-                                (game?.countAvaliacoes ? game?.countAvaliacoes : 1)).toFixed(2)}
-                        </div>
-                    </div>
                     <form onSubmit={event => handleCadastrarComentario(event)}>
                         <TextArea title="Comentário" />
-                        <InputWithLimits label="Nota" type="number" />
+                        <InputWithLimits
+                            label="Nota"
+                            type="number"
+                        />
                         <div>
                             <ButtonPrincipal title="Avaliar" />
                         </div>
@@ -140,6 +169,16 @@ const Descricao = () => {
                         )
                     }
                 </div>
+                <form onSubmit={event => handleAlterarComentario(event)} className="Descricao__form">
+                    <Title title="Alterar comentário" />
+                    <InputWithChanges
+                        label={"Comentário"}
+                        type={"text"}
+                        value={comentario}
+                        setValue={setComentario}
+                    />
+                    <ButtonPrincipal title="Alterar" />
+                </form>
             </div>
             <ToastContainer />
         </div >
