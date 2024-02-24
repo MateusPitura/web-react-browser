@@ -63,6 +63,12 @@ const Descricao = () => {
             <div className="Descricao__paineis">
                 <div className="Descricao__form">
                     <Title title={game?.nome ? game?.nome : ""} />
+                    <div className="Descricao__descricao">
+                        {game?.descricao}
+                    </div>
+                    <div className="Descricao__imagem">
+                        <img className="Game__image" src={game?.imagem} height={'50%'} width={'50%'} />
+                    </div>
                     <div className="Descricao__categoria">
                         {game?.categoria}
                     </div>
@@ -70,21 +76,9 @@ const Descricao = () => {
                         Link:
                         <a target="_blank" href={game?.link}>{game?.link}</a>
                     </div>
-                    <div className="Descricao__trailer">
-                        <iframe
-                            width="560"
-                            height="315"
-                            src={game?.trailer}
-                            title="YouTube video player"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen></iframe>
-                    </div>
-                    <div className="Descricao__descricao">
-                        {game?.descricao}
-                    </div>
-                    <div className="Descricao__imagem">
-                        <img className="Game__image" src={game?.imagem} height={'50%'} width={'50%'} />
+                    <div className="Descricao__link">
+                        Trailer:
+                        <a target="_blank" href={game?.trailer}>{game?.trailer}</a>
                     </div>
                     {/* <div>
                 {game?.sumNotas / game?.countAvaliacoes}

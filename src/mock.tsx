@@ -140,7 +140,7 @@ export const GAME_LIST_MOCK =
             "nome": "League of Legends",
             "categoria": "Estratégia",
             "link": "https://na.leagueoflegends.com/en-us/",
-            "trailer": "https://www.youtube.com/embed/BGtROJeMPeE?si=MwJXGphOEIs3JTMc",
+            "trailer": "https://www.youtube.com/watch?v=BGtROJeMPeE&ab_channel=LeagueofLegends",
             "descricao": "Junte-se a milhões de jogadores em uma batalha épica de estratégia e habilidade. Escolha entre uma variedade de campeões e lute em equipes para destruir a base inimiga neste popular jogo multiplayer online de arena de batalha.",
             "imagem": "https://fastly.picsum.photos/id/238/300/200.jpg?hmac=7sscr7sm3lmziy5VYZR9D3psQi7vltiVEaoux0v0s0M"
         },
