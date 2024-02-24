@@ -1,5 +1,5 @@
 import React from "react";
-import './Welcome.css'
+import './Login.css'
 import { useNavigate } from "react-router-dom";
 import ButtonSecondary from "../../components/buttonSecondary/ButtonSecondary.tsx";
 import ButtonPrincipal from "../../components/buttonPrincipal/ButtonPrincipal.tsx";
@@ -16,7 +16,7 @@ type loginType = {
     senha: string,
 }
 
-const Welcome = () => {
+const Login = () => {
 
     const navigate = useNavigate()
 
@@ -30,15 +30,15 @@ const Welcome = () => {
         ))
         if (currentUser) {
             set(USER_LOGADO, currentUser)
-            navigate("/home")
+            navigate("/")
         } else {
             toastError('Usuário e/ou senha inválidos')
         }
     }
 
     return (
-        <div className="Welcome">
-            <div className="Welcome__form">
+        <div className="Login">
+            <div className="Login__form">
                 <Title title="Seja bem-vindo!" />
                 <form onSubmit={event => handleValidarLogin(event)}>
                     <Input label="E-mail" type="email" />
@@ -56,4 +56,4 @@ const Welcome = () => {
     )
 }
 
-export default Welcome
+export default Login

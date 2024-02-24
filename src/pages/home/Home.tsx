@@ -4,14 +4,14 @@ import InputWithChanges from "../../components/inputWithChanges/InputWithChanges
 import Game from "../../components/game/Game.tsx";
 import ButtonPrincipal from "../../components/buttonPrincipal/ButtonPrincipal.tsx";
 import { get } from '../../controller/localStorage.tsx'
-import { GAME_LIST, CATEGORIA } from "../../constant.tsx";
+import { GAME_LIST, CATEGORIA, USER_LOGADO } from "../../constant.tsx";
 import Header from '../../components/header/Header.tsx'
 import ButtonTertiary from "../../components/buttonTertiary/ButtonTertiary.tsx";
 import ButtonSecondary from "../../components/buttonSecondary/ButtonSecondary.tsx"
 import "./Home.css"
 import { remove } from "../../controller/localStorage.tsx";
-import { USER_LOGADO } from "../../constant.tsx";
 import Select from "../../components/select/Select.tsx";
+import { getUserLocal } from '../../controller/userLocal.tsx'
 
 type gameType = {
     id: number,
@@ -37,10 +37,14 @@ const Home = () => {
 
     const handleSair = () => {
         remove(USER_LOGADO)
-        navigate("/")
+        navigate("/login")
     }
 
     useEffect(() => {
+        const userLogado = getUserLocal()
+        if(!userLogado){
+            navigate("/login")
+        }
         setGameList(get(GAME_LIST))
         setCategorias(get(CATEGORIA));
     }, [])
@@ -60,7 +64,11 @@ const Home = () => {
     }
 
     const handleRecomendacoes = () => {
-        const userLogado = get(USER_LOGADO)
+        const userLogado = getUserLocal()
+        console.log(userLogado)
+        if(!userLogado){
+            navigate("/login")
+        }
         const gameNotRateList = gameList.filter((item: gameType) => {
             const comentario = item.comentarios.find(item =>
                 item.id === userLogado.id

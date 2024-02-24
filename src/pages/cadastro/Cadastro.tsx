@@ -40,7 +40,7 @@ const Cadastro = () => {
             }
             save(USER_LIST, newUser)
             toastSuccess('Usuário cadastrado');
-            setTimeout(() => navigate("/"), 3000)
+            setTimeout(() => navigate("/login"), 3000)
         }
     }
 
@@ -59,7 +59,7 @@ const Cadastro = () => {
                 </form>
                 <ButtonTertiary
                     title="Voltar"
-                    onClick={() => navigate("/")}
+                    onClick={() => navigate("/login")}
                 />
             </div>
             <ToastContainer />

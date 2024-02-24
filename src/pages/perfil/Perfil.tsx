@@ -9,6 +9,7 @@ import Title from '../../components/title/Title.tsx'
 import { useNavigate } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import { toastSuccess } from '../../controller/toast.tsx'
+import { getUserLocal } from '../../controller/userLocal.tsx'
 
 const Perfil = () => {
 
@@ -20,10 +21,14 @@ const Perfil = () => {
     const [pais, setPais] = useState("")
 
     const navigate = useNavigate()
-
-    const userLogado = get(USER_LOGADO)
+    const userLogado = getUserLocal()
 
     useEffect(() => {
+        const userLogado = getUserLocal()
+        if(!userLogado){
+            navigate("/login")
+        }
+        
         setNome(userLogado.nome)
         setEmail(userLogado.email)
         setSenha(userLogado.senha)
@@ -75,7 +80,7 @@ const Perfil = () => {
                 </form>
                 <ButtonTertiary
                     title="Voltar"
-                    onClick={() => navigate("/home")}
+                    onClick={() => navigate("/")}
                 />
                 <ToastContainer />
             </div>

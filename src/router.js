@@ -1,4 +1,4 @@
-import Welcome from './pages/welcome/Welcome.tsx'
+import Login from './pages/login/Login.tsx'
 import Cadastro from './pages/cadastro/Cadastro.tsx';
 import Home from './pages/home/Home.tsx';
 import Perfil from './pages/perfil/Perfil.tsx';
@@ -9,15 +9,15 @@ const { createBrowserRouter } = require("react-router-dom");
 
 const router = createBrowserRouter([
     {
-        path: "/",
-        element: <Welcome/>
+        path: "/login",
+        element: <Login/>
     },
     {
         path: "/cadastro",
         element: <Cadastro/>
     },
     {
-        path: "/home",
+        path: "/",
         element: <Home/>
     },
     {

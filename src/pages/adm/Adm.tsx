@@ -76,7 +76,7 @@ const Adm = () => {
             <Header>
                 <ButtonTeriary
                     title="Voltar"
-                    onClick={() => navigate("/")}
+                    onClick={() => navigate("/login")}
                 />
             </Header>
             <div className="Adm__paineis">

@@ -12,6 +12,7 @@ import Header from "../../components/header/Header.tsx";
 import { useNavigate } from "react-router-dom";
 import { toastSuccess, toastError } from "../../controller/toast.tsx";
 import { ToastContainer } from 'react-toastify';
+import { getUserLocal } from '../../controller/userLocal.tsx'
 
 type gameType = {
     id: number,
@@ -45,7 +46,10 @@ const Descricao = () => {
 
     useEffect(() => {
         const id = get(GAME_SELECT)
-        const userLogado = get(USER_LOGADO)
+        const userLogado = getUserLocal()
+        if(!userLogado){
+            navigate("/login")
+        }
         const gameSearched = gameList.find((item: gameType) =>
             item.id.toString() == id
         )
@@ -66,7 +70,7 @@ const Descricao = () => {
             return
         }
         const id = get(GAME_SELECT)
-        const userLogado = get(USER_LOGADO)
+        const userLogado = getUserLocal()
         const gameListUpdated = gameList.map(item => {
             if (item.id === id) {
                 item.comentarios.map(item => {
@@ -90,7 +94,7 @@ const Descricao = () => {
             return
         }
         const id = get(GAME_SELECT)
-        const userLogado = get(USER_LOGADO)
+        const userLogado = getUserLocal()
         const gameListUpdated = gameList.map(item => {
             if (item.id === id) {
                 const newComentario = {
@@ -114,7 +118,7 @@ const Descricao = () => {
             <Header>
                 <ButtonTeriary
                     title="Voltar"
-                    onClick={() => navigate("/home")}
+                    onClick={() => navigate("/")}
                 />
             </Header>
             <div className="Descricao__paineis">
