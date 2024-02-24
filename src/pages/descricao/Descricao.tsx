@@ -2,12 +2,15 @@ import React, { useEffect, useState } from "react";
 import "./Descricao.css"
 import { get, set } from "../../controller/localStorage.tsx";
 import { GAME_LIST, GAME_SELECT } from "../../constant.tsx";
-import Input from "../../components/input/Input.tsx";
+import InputWithLimits from "../../components/inputWithLimits/InputWithLimits.tsx";
 import ButtonPrincipal from "../../components/buttonPrincipal/ButtonPrincipal.tsx";
+import TextArea from "../../components/textArea/TextArea.tsx";
 import ButtonTeriary from '../../components/buttonTertiary/ButtonTertiary.tsx'
 import Title from '../../components/title/Title.tsx'
 import Header from "../../components/header/Header.tsx";
 import { useNavigate } from "react-router-dom";
+import { toastSuccess } from "../../controller/toast.tsx";
+import { ToastContainer } from 'react-toastify';
 
 type gameType = {
     id: number,
@@ -17,7 +20,9 @@ type gameType = {
     trailer: string,
     descricao: string,
     imagem: string,
-
+    countAvaliacoes: number,
+    sumNotasAvaliacoes: number,
+    comentarios: string[]
 }
 
 const Descricao = () => {
@@ -39,18 +44,21 @@ const Descricao = () => {
         setGame(gameSearched)
     }, [gameList])
 
-    // const handleCadastrarComentario = (event) => {
-    //     event.preventDefault()
-    //     const list = get(GAME_LIST)
-    //     list.map(item => {
-    //         if (item.id.toString() === id) {
-    //             item.comentarios.push(event.target[0].value)
-    //             item.countAvaliacoes++
-    //             item.sumNotas += Number(event.target[1].value)
-    //         }
-    //     })
-    //     set(GAME_LIST, list)
-    // }
+    const handleCadastrarComentario = (event: React.FormEvent) => {
+        event.preventDefault()
+        const id = get(GAME_SELECT)
+        gameList.map(item => {
+            if (item.id === id) {
+                console.log("B")
+                item.comentarios.push(event.target[0].value)
+                item.countAvaliacoes++
+                item.sumNotasAvaliacoes += Number(event.target[1].value)
+            }
+        })
+        set(GAME_LIST, gameList)
+        setGameList(gameList)
+        toastSuccess("Avaliação cadastrada")
+    }
 
     return (
         <div className="Descricao">
@@ -80,24 +88,36 @@ const Descricao = () => {
                         Trailer:
                         <a target="_blank" href={game?.trailer}>{game?.trailer}</a>
                     </div>
-                    {/* <div>
-                {game?.sumNotas / game?.countAvaliacoes}
-            </div>
-            {
-                game?.comentarios.map(item =>
-                    <div>{item}</div>
-                )
-            } */}
-                    {/* <form onSubmit={event => handleCadastrarComentario(event)}>
-                <Input label="Comentário" type="text" />
-                <Input label="Nota" type="number" />
-                <div>
-                    <Button title="Inserir comentário" />
                 </div>
-            </form> */}
+                <div className="Descricao__form">
+                    <Title title="Avalie o jogo" />
+                    <div className="Descricao__nota">
+                        Nota:
+                        <div>
+                            {((game?.sumNotasAvaliacoes ? game?.sumNotasAvaliacoes : 1)
+                                /
+                                (game?.countAvaliacoes ? game?.countAvaliacoes : 1)).toFixed(2)}
+                        </div>
+                    </div>
+                    <form onSubmit={event => handleCadastrarComentario(event)}>
+                        <TextArea title="Comentário" />
+                        <InputWithLimits label="Nota" type="number" />
+                        <div>
+                            <ButtonPrincipal title="Avaliar" />
+                        </div>
+                    </form>
+                </div>
+                <div className="Descricao__form">
+                    <Title title="Comentários"/>
+                    {
+                        game?.comentarios.map(item =>
+                            <div className="Descricao__comentario">{item}</div>
+                        )
+                    }
                 </div>
             </div>
-        </div>
+            <ToastContainer />
+        </div >
     )
 }
 

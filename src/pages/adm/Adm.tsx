@@ -107,12 +107,12 @@ const Adm = () => {
                         <ButtonPrincipal title="Criar" />
                     </form>
                 </div>
-                {/* <div className="Adm__form">
+                <div className="Adm__form">
                     <Title title="Carregar mock" />
                     <form onSubmit={event => handleCarregarMock(event)}>
                         <ButtonPrincipal title="Carregar" />
                     </form>
-                </div> */}
+                </div>
             </div>
             <ToastContainer />
         </div>
