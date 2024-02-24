@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Descricao.css"
 import { get, set } from "../../controller/localStorage.tsx";
-import { GAME_LIST, GAME_SELECT } from "../../constant.tsx";
+import { GAME_LIST, GAME_SELECT, USER_LOGADO } from "../../constant.tsx";
 import InputWithLimits from "../../components/inputWithLimits/InputWithLimits.tsx";
 import ButtonPrincipal from "../../components/buttonPrincipal/ButtonPrincipal.tsx";
 import TextArea from "../../components/textArea/TextArea.tsx";
@@ -9,7 +9,7 @@ import ButtonTeriary from '../../components/buttonTertiary/ButtonTertiary.tsx'
 import Title from '../../components/title/Title.tsx'
 import Header from "../../components/header/Header.tsx";
 import { useNavigate } from "react-router-dom";
-import { toastSuccess } from "../../controller/toast.tsx";
+import { toastSuccess, toastError } from "../../controller/toast.tsx";
 import { ToastContainer } from 'react-toastify';
 
 type gameType = {
@@ -22,13 +22,17 @@ type gameType = {
     imagem: string,
     countAvaliacoes: number,
     sumNotasAvaliacoes: number,
-    comentarios: string[]
+    comentarios: {
+        id: number,
+        text: string
+    }[]
 }
 
 const Descricao = () => {
 
     const [gameList, setGameList] = useState<gameType[]>([]);
     const [game, setGame] = useState<gameType>();
+    const [comentarioPreviousRegistered, setComentarioPreviousRegistered] = useState(false)
 
     const navigate = useNavigate()
 
@@ -38,18 +42,35 @@ const Descricao = () => {
 
     useEffect(() => {
         const id = get(GAME_SELECT)
+        const userLogado = get(USER_LOGADO)
         const gameSearched = gameList.find((item: gameType) =>
             item.id.toString() == id
         )
         setGame(gameSearched)
+        const comentarioPreviousRegisteredTemp = gameSearched?.comentarios.find(item =>
+            item.id == userLogado.id
+        )
+        if (comentarioPreviousRegisteredTemp) {
+            console.log(comentarioPreviousRegisteredTemp)
+            setComentarioPreviousRegistered(true)
+        }
     }, [gameList])
 
     const handleCadastrarComentario = (event: React.FormEvent) => {
         event.preventDefault()
+        if (comentarioPreviousRegistered) {
+            toastError("Jogo já avaliado")
+            return
+        }
         const id = get(GAME_SELECT)
+        const userLogado = get(USER_LOGADO)
         const gameListUpdated = gameList.map(item => {
             if (item.id === id) {
-                item.comentarios.push(event.target[0].value)
+                const newComentario = {
+                    id: userLogado.id,
+                    text: event.target[0].value
+                }
+                item.comentarios.push(newComentario)
                 item.countAvaliacoes++
                 item.sumNotasAvaliacoes += Number(event.target[1].value)
             }
@@ -114,7 +135,7 @@ const Descricao = () => {
                             <div
                                 key={game?.comentarios.indexOf(item)}
                                 className="Descricao__comentario"
-                            >{item}
+                            >{item.text}
                             </div>
                         )
                     }
